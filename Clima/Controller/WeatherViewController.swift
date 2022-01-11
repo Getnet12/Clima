@@ -15,6 +15,8 @@ class WeatherViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
     
+    var weatherManager = WeatherManger()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // to notify this class about the user interaction to communicate with the users
@@ -42,6 +44,9 @@ class WeatherViewController: UIViewController, UITextFieldDelegate{
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if let city = searchTextField.text{
+            weatherManager.fetchWeather(cityName: city)
+        }
         searchTextField.text = ""
     }
     
